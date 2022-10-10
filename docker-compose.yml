@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "80:80"
+    depends_on:
+      - database
+    networks:
+      - spring-docker-network
+
+  database:
+    image: mariadb:10.7
+    container_name: database
+    ports:
+      - "3307:3307"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spring-docker
+      MYSQL_USER: spring-docker
+      MYSQL_PASSWORD: spring-docker
+    volumes:
+      - ./.data:/var/lib/mysql
+    networks:
+      - spring-docker-network
+
+
+networks:
+  spring-docker-network:
+    driver: bridge
