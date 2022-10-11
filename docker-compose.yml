@@ -6,8 +6,9 @@ services:
       context: ./
       dockerfile: Dockerfile
     container_name: backend
+    image: backend:1.0
     ports:
-      - "80:80"
+      - "8081:8081"
     depends_on:
       - database
     networks:
@@ -27,7 +28,6 @@ services:
       - ./.data:/var/lib/mysql
     networks:
       - spring-docker-network
-
 
 networks:
   spring-docker-network:
