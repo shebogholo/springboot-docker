@@ -14,3 +14,7 @@
 1. Build the image: ` docker-compose up --build `
 2. Stop the container: ` docker-compose down `
 3. Test the application: ` curl http://localhost:8080 `
+
+
+### Samples
+1. ` GRANT ALL ON spring-docker.* TO 'spring-docker'@'%'; `

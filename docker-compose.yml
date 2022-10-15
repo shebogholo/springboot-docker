@@ -3,32 +3,37 @@ version: '3.9'
 services:
   backend:
     build:
-      context: ./
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: .docker/Dockerfile
     container_name: backend
     image: backend:1.0
+    restart: unless-stopped
     ports:
-      - "8081:8081"
+      - "80:80"
+#    volumes:
+#      - ./:/app
     depends_on:
       - database
     networks:
-      - spring-docker-network
+      - dev
 
   database:
-    image: mariadb:10.7
+    image: mariadb:10.8
     container_name: database
+    restart: always
     ports:
-      - "3307:3307"
+      - "3308:3308"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: spring-docker
-      MYSQL_USER: spring-docker
-      MYSQL_PASSWORD: spring-docker
+      MARIADB_DATABASE: docker
+      MARIADB_USER: docker
+      MARIADB_PASSWORD: docker
+      MARIADB_ROOT_PASSWORD: docker
     volumes:
-      - ./.data:/var/lib/mysql
+      - .data:/var/lib/mysql
+      - .docker/config.cnf:/etc/mysql/conf.d/config.cnf
     networks:
-      - spring-docker-network
+      - dev
 
 networks:
-  spring-docker-network:
+  dev:
     driver: bridge

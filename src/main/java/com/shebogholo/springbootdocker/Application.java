@@ -33,7 +33,8 @@ public class Application {
     @Bean
     ApplicationRunner init(){
         return args -> {
-            System.out.println("***********************************************************************");
+            System.out.println("**********************************************************************************");
+            System.out.println("****************************  Application Starting  ******************************");
         };
     }
 
