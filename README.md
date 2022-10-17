@@ -1,5 +1,12 @@
 ## Spring Boot with Docker
 
+### Getting Started using Docker
+1. Install Docker: [https://docs.docker.com/install/](https://docs.docker.com/install/)
+2. Install Docker Compose: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
+3. Run the application: ` docker-compose up --build `
+4. Access the application: [http://localhost](http://localhost)
+
+
 ### Docker Commands
 1. Build the image: ` docker build -t spring-boot-docker . `
 2. Run the container: ` docker run -p 8080:8080 spring-boot-docker `

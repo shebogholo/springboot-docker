@@ -9,9 +9,9 @@ services:
     image: backend:1.0
     restart: unless-stopped
     ports:
-      - "80:80"
-#    volumes:
-#      - ./:/app
+      - "150:150"
+    volumes:
+      - ./:/app
     depends_on:
       - database
     networks:
