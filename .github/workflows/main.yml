@@ -9,7 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     steps:
-      - name: Run docker compose on server
+      - name: Pull changes and run docker compose on server
         uses: appleboy/ssh-action@master
         with:
             host: ${{ secrets.HOST }}
@@ -18,5 +18,6 @@ jobs:
             port: ${{ secrets.PORT }}
             script: |
               cd /root/springboot-docker
-              docker compose up --force-recreate -d
+              git pull
+              docker compose up --build -d
 
