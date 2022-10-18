@@ -9,7 +9,7 @@ services:
     image: backend:1.0
     restart: unless-stopped
     ports:
-      - "150:150"
+      - "127.0.0.1:150:150"
 #    volumes:
 #      - ./:/app
     depends_on:
@@ -22,7 +22,7 @@ services:
     container_name: database
     restart: always
     ports:
-      - "3308:3308"
+      - "127.0.0.1:3308:3308"
     environment:
       MARIADB_DATABASE: docker
       MARIADB_USER: docker
