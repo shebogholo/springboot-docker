@@ -1,10 +1,9 @@
 ## Spring Boot with Docker
 
 ### Getting Started using Docker
-1. Install Docker: [https://docs.docker.com/install/](https://docs.docker.com/install/)
-2. Install Docker Compose: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
-3. Run the application: ` docker-compose up --build `
-4. Access the application: [http://localhost](http://localhost)
+1. Install Docker from repository: [https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository](Install using the repository)
+2. Run the following command to build the image: ` docker compose up --build `
+3. Access the application at: [http://localhost:150](http://localhost:150)
 
 
 ### Docker Commands
