@@ -9,14 +9,16 @@ jobs:
   deploy:
     runs-on: 20.04
     steps:
-        - name: Run docker compose on server
-          uses: appleboy/ssh-action@master
-          with:
-              host: ${{ secrets.HOST }}
-              username: ${{ secrets.USERNAME }}
-              key: ${{ secrets.KEY }}
-              port: ${{ secrets.PORT }}
-              script: |
-                cd /root/springboot-docker
-                docker compose up --build -d
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run docker compose on server
+        uses: appleboy/ssh-action@master
+        with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            key: ${{ secrets.KEY }}
+            port: ${{ secrets.PORT }}
+            script: |
+              cd /root/springboot-docker
+              docker compose up --build -d
 
