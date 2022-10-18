@@ -18,7 +18,7 @@ public class Application {
 
     @RequestMapping("/")
     public Message index() {
-        return Message.builder().message("Greetings from Spring Boot!").build();
+        return Message.builder().message("Greetings from Spring Boot!!!").build();
     }
 
     @Builder

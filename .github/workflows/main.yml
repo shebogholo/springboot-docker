@@ -1,0 +1,23 @@
+name: Spring Boot CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # Run docker compose on server using ssh
+  deploy:
+    runs-on: 20.04
+    steps:
+        - name: Run docker compose on server
+          uses: appleboy/ssh-action@master
+            with:
+                host: ${{ secrets.HOST }}
+                username: ${{ secrets.USERNAME }}
+                key: ${{ secrets.KEY }}
+                port: ${{ secrets.PORT }}
+                script: |
+                cd /root/springboot-docker
+                docker compose up --build -d
+
