@@ -6,7 +6,6 @@ on:
       - main
 
 jobs:
-  # Run docker compose on server using ssh
   deploy:
     runs-on: 20.04
     steps:
