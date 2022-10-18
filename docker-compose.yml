@@ -10,8 +10,8 @@ services:
     restart: unless-stopped
     ports:
       - "150:150"
-    volumes:
-      - ./:/app
+#    volumes:
+#      - ./:/app
     depends_on:
       - database
     networks:
