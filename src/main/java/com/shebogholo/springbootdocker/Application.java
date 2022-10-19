@@ -20,7 +20,7 @@ public class Application {
 
     @RequestMapping("/")
     public Message index() {
-        return Message.builder().message("API is up and running on a Docker container!").build();
+        return Message.builder().message("API is up and running on a Docker!").build();
     }
 
     @Builder
