@@ -3,9 +3,10 @@ POST https://shebogholo.com/springboot1/api/v1/auth/register
 Content-Type: application/json
 
 {
-  "firstName": "ddd",
-  "lastName": "ddd",
-  "email": "5@gmail.com"
+  "firstName": "user1",
+  "lastName": "user1",
+  "email": "user1@gmail.com",
+  "password": "user1"
 }
 
 
@@ -14,9 +15,10 @@ POST https://shebogholo.com/springboot1/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "email": "5@gmail.com",
-  "password": "jshdkjhdsk"
+  "email": "user1@gmail.com",
+  "password": "user1"
 }
+
 
 ### Get all users
 GET https://shebogholo.com/springboot1/api/v1/users
@@ -29,7 +31,7 @@ Accept: application/json
 
 
 ### Delete user by Id
-DELETE https://shebogholo.com/springboot1/api/v1/users/10
+DELETE https://shebogholo.com/springboot1/api/v1/users/1001
 Accept: application/json
 
 
@@ -38,7 +40,7 @@ PUT https://shebogholo.com/springboot1/api/v1/users/1
 Content-Type: application/json
 
 {
-  "firstName": "3",
+  "firstName": "",
   "lastName": "3",
   "email": "g@gmail.com"
 }
