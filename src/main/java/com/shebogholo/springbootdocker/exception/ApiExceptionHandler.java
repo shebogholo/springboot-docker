@@ -21,5 +21,5 @@ public class ApiExceptionHandler {
         );
         // 2. Return payload
         return new ResponseEntity<>(apiException, badRequest);
-    };
+    }
 }
