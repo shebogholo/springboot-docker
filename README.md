@@ -12,11 +12,12 @@
 4. Docker & Docker Compose
 
 ### Dev Tools
-1. Spring Boot Dev Tools
-2. Lombok
-3. Spring Data JPA
-4. Spring Web
+1. Spring Web
+2. Spring Data JPA
+3. Lombok
+4. Spring Boot Dev Tools
 5. Spring Security
+6. Mariadb java client
 
 ### TODO
 1. Roles
