@@ -1,0 +1,44 @@
+### Register new user
+POST https://shebogholo.com/springboot1/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "firstName": "ddd",
+  "lastName": "ddd",
+  "email": "5@gmail.com"
+}
+
+
+### Login
+POST https://shebogholo.com/springboot1/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "5@gmail.com",
+  "password": "jshdkjhdsk"
+}
+
+### Get all users
+GET https://shebogholo.com/springboot1/api/v1/users
+Accept: application/json
+
+
+### Get user by Id
+GET https://shebogholo.com/springboot1/api/v1/users/1
+Accept: application/json
+
+
+### Delete user by Id
+DELETE https://shebogholo.com/springboot1/api/v1/users/10
+Accept: application/json
+
+
+### Update user details
+PUT https://shebogholo.com/springboot1/api/v1/users/1
+Content-Type: application/json
+
+{
+  "firstName": "3",
+  "lastName": "3",
+  "email": "g@gmail.com"
+}
