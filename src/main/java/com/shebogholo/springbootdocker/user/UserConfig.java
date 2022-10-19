@@ -24,7 +24,6 @@ public class UserConfig {
                 // insert users to database
                 userRepository.save(user);
             }
-
         };
     }
 }
