@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - master
+    path_ignore:
+      - 'README.md'
+      - '.github/**'
+      - '**/*.yml'
+      - '**/*.xml'
 
 jobs:
   deploy:

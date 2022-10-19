@@ -4,6 +4,7 @@
 1. Spring Boot
 2. MariaDB 
 3. Docker
+4. Nginx 
 
 ### DevOps
 1. Git
