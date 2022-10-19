@@ -19,8 +19,12 @@ public class UserConfig {
                     .email("shebogholo@gmail.com")
                     .password(passwordService.passwordEncoder().encode("68jhGdj@.ld"))
                     .build();
-            // insert users to database
-            userRepository.saveAll(List.of(user));
+            // check if user is in database
+            if (!userRepository.existsByEmail(user.getEmail())){
+                // insert users to database
+                userRepository.save(user);
+            }
+
         };
     }
 }
