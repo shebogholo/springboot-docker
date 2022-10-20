@@ -2,8 +2,8 @@ package com.shebogholo.springbootdocker.auth;
 
 import com.shebogholo.springbootdocker.user.User;
 import com.shebogholo.springbootdocker.user.UserRepository;
-import com.shebogholo.springbootdocker.utils.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,43 +12,57 @@ import java.util.Optional;
 public class AuthService {
 
     @Autowired
-    private PasswordService passwordService;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private UserRepository userRepository;
 
+
+
     @Autowired
-    public AuthService(UserRepository userRepository, PasswordService passwordService) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.passwordService = passwordService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     // register
     public String register(RegisterRequest registerRequest) {
+        // check valid email format
+        if (!registerRequest.email().matches("^(.+)@(.+).$")){
+            throw new IllegalStateException("Email is not valid");
+        }
+
+        // check if password has at least 6 characters, one number, one special character, one uppercase letter
+        if (registerRequest.password().length() < 6 || !registerRequest.password().matches(".*\\d.*") || !registerRequest.password().matches(".*[!@#$%^&*()_+].*") || !registerRequest.password().matches(".*[A-Z].*")){
+            throw new IllegalStateException("Password is not valid");
+        }
+
+        // check if user is in database
+        boolean userExists = userRepository
+                .findByEmail(registerRequest.email())
+                .isPresent();
+        if (userExists){
+            throw new IllegalStateException("Email already taken");
+        }
+
+        String encodedPassword = passwordEncoder.encode(registerRequest.password());
         User user = User.builder()
                 .firstName(registerRequest.firstName())
                 .lastName(registerRequest.lastName())
                 .email(registerRequest.email())
-                .password(this.passwordService.passwordEncoder().encode(registerRequest.password()))
+                .password(encodedPassword)
                 .build();
-        // todo: Check if email is valid
 
-
-        // Check if email is not taken
-        if (userRepository.existsByEmail(user.getEmail())){
-            return "This email already exist!";
-        }else {
-            // Store user to DB
-            userRepository.save(user);
-            return "User registered successfully!";
-        }
+        // Store user to DB
+        userRepository.save(user);
+        return "User registered successfully!";
     }
 
     // function to authorize user
     public Optional<User> login(LoginRequest loginRequest) {
         Optional<User> user = userRepository.findByEmail(loginRequest.email());
         if (user.isPresent()) {
-            if (this.passwordService.passwordEncoder().matches(loginRequest.password(), user.get().getPassword())) {
+            if (passwordEncoder.matches(loginRequest.password(), user.get().getPassword())) {
                 // generate token
                 return user;
             }

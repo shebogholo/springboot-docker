@@ -1,17 +1,19 @@
 ### Register new user
-POST https://shebogholo.com/springboot1/api/v1/auth/register
+#POST https://shebogholo.com/springboot1/api/v1/auth/register
+POST http://localhost:150/api/v1/auth/register
 Content-Type: application/json
 
 {
-  "firstName": "user1",
-  "lastName": "user1",
-  "email": "user1@gmail.com",
-  "password": "user1"
+  "firstName": "user6",
+  "lastName": "user6",
+  "email": "user@gmail",
+  "password": "A#1"
 }
 
 
 ### Login
-POST https://shebogholo.com/springboot1/api/v1/auth/login
+#POST https://shebogholo.com/springboot1/api/v1/auth/login
+POST http://localhost:150/api/v1/auth/login
 Content-Type: application/json
 
 {
@@ -21,7 +23,8 @@ Content-Type: application/json
 
 
 ### Get all users
-GET https://shebogholo.com/springboot1/api/v1/users
+#GET https://shebogholo.com/springboot1/api/v1/users
+GET http://localhost:150/api/v1/users
 Accept: application/json
 
 
