@@ -10,14 +10,8 @@ import java.util.Optional;
 
 @Service
 public class AuthService {
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private UserRepository userRepository;
-
-
+    private final PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
 
     @Autowired
     public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
